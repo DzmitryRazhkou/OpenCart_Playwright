@@ -70,3 +70,31 @@ test("Click On The Login Page Test", async ({ page }) => {
   console.log(" =====> " + textLoginLink + " <===== ");
   expect(loginLink).toHaveText(textLoginLink);
 });
+
+test("Click On The Shopping Cart Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  const shoppingCartPage = basePage.getShoppingCartPage();
+  await yourStorePage.launchURL();
+
+  await yourStorePage.shoppingCartBtn.click();
+  const shoppingCartLink = await shoppingCartPage.shoppingCartLink;
+
+  const shoppingCartLinkText = await shoppingCartLink.textContent();
+  console.log(" =====> " + shoppingCartLinkText + " <===== ");
+  expect(shoppingCartLink).toHaveText(shoppingCartLinkText);
+});
+
+test("Click On The CheckOut Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  const checkOutPage = basePage.getCheckOutPage();
+  await yourStorePage.launchURL();
+
+  await yourStorePage.checkOutBtn.click();
+  const checkOutLinkLink = await checkOutPage.checkOutLink;
+
+  const checkOutLinkLinkText = await checkOutLinkLink.textContent();
+  console.log(" =====> " + checkOutLinkLinkText + " <===== ");
+  expect(checkOutLinkLink).toHaveText(checkOutLinkLinkText);
+});
