@@ -1,3 +1,5 @@
+const { expect } = require("@playwright/test");
+
 class YourStorePage {
   constructor(page) {
     this.page = page;
@@ -25,6 +27,13 @@ class YourStorePage {
     this.checkOutBtn = page.locator(
       "ul[class='list-inline'] li:nth-of-type(5)"
     );
+    this.navigationBars = page.locator("ul[class='nav navbar-nav'] li");
+    this.productList = page.locator(
+      "div[class='product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12'] div[class='caption'] h4 a"
+    );
+    this.ads = page.locator(
+      "div[class='carousel swiper-viewport'] div div img"
+    );
   }
 
   async launchURL() {
@@ -40,6 +49,63 @@ class YourStorePage {
         break;
       }
       await expect(await this.currencySign).toHaveText(expectedCurrencySign);
+    }
+  }
+  async getNavigationBars(bar) {
+    const count = await this.navigationBars.count();
+    const titles = await this.navigationBars.allTextContents();
+    console.log();
+    for (let i = 0; i < count; i++) {
+      if (await titles.includes(bar)) {
+        console.log(" =====> " + bar + " <===== ");
+        break;
+      } else {
+        console.log("Please provide the product from the list");
+        break;
+      }
+    }
+  }
+  async getProductList(productName) {
+    const count = await this.productList.count();
+    const productListText = await this.productList.allTextContents();
+    console.log(productListText);
+    for (let i = 0; i <= count; i++) {
+      if (productListText.includes(productName)) {
+        console.log(" =====> " + productName + " <===== ");
+        break;
+      } else {
+        console.log("Please provide the product from the list");
+        break;
+      }
+    }
+  }
+  async adsQuantity(qty) {
+    const countOfAds = await this.ads.count();
+    console.log(
+      " =====> The Quantity of Advertise is " +
+        countOfAds +
+        " Companies. <===== "
+    );
+    expect(countOfAds).toEqual(qty);
+  }
+
+  async getAds(brand) {
+    const list = [];
+    const attrs = await this.ads;
+    const count = await this.ads.count();
+    for (let i = 0; i < count; i++) {
+      let s = await attrs.nth(i).getAttribute("alt");
+      list.push(s);
+    }
+    if (list.includes(brand)) {
+      for (const el of list) {
+        console.log(el);
+      }
+      console.log(" =====> " + brand + " <===== ");
+      return true;
+    } else {
+      console.log(" =====> Provide another brand <===== ");
+      return false;
     }
   }
 }

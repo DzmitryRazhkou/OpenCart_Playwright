@@ -98,3 +98,37 @@ test("Click On The CheckOut Test", async ({ page }) => {
   console.log(" =====> " + checkOutLinkLinkText + " <===== ");
   expect(checkOutLinkLink).toHaveText(checkOutLinkLinkText);
 });
+
+test("Validate Navigation Bars", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  await yourStorePage.launchURL();
+
+  await yourStorePage.getNavigationBars("Software");
+});
+
+test("Featured Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  await yourStorePage.launchURL();
+
+  await yourStorePage.getProductList("iPhone");
+});
+
+test("Advertise Quantity Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const qty = dataSet.qty;
+  const yourStorePage = basePage.getYourStorePage();
+  await yourStorePage.launchURL();
+
+  await yourStorePage.adsQuantity(qty);
+});
+
+test.only("Advertise Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const brand = dataSet.brand;
+  const yourStorePage = basePage.getYourStorePage();
+  await yourStorePage.launchURL();
+  const result = await yourStorePage.getAds(brand);
+  expect(result).toBeTruthy();
+});

@@ -1,5 +1,7 @@
 {
   "titlePage": "Your Store",
   "currency": "€ Euro",
-  "currencySign": "€"
+  "currencySign": "€",
+  "qty": 21,
+  "brand": "Dell"
 }
