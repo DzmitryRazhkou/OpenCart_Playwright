@@ -3,6 +3,7 @@ const { expect } = require("@playwright/test");
 class YourStorePage {
   constructor(page) {
     this.page = page;
+    this.logo = page.locator("img[title='naveenopencart']");
     this.currencyBtn = page.locator(
       "button[class='btn btn-link dropdown-toggle']"
     );

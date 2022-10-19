@@ -4,6 +4,17 @@ const dataSet = JSON.parse(
   JSON.stringify(require("../utils/yourStorePage.json"))
 );
 
+test.only("Your Store Logo Test", async ({ page }) => {
+  const titlePageYourStore = dataSet.titlePage;
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  await yourStorePage.launchURL();
+
+  const flag = await yourStorePage.logo.isVisible();
+  expect(flag).toBeTruthy();
+  console.log(" =====> Logo has been showed up <===== ");
+});
+
 test("Your Store Page Title Test", async ({ page }) => {
   const titlePageYourStore = dataSet.titlePage;
   const basePage = new BasePage(page);
