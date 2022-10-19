@@ -102,17 +102,20 @@ test("Click On The CheckOut Test", async ({ page }) => {
 test("Validate Navigation Bars", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
+  const navigationBars = dataSet.navBars;
   await yourStorePage.launchURL();
-
-  await yourStorePage.getNavigationBars("Software");
+  const result = await yourStorePage.getNavigationBars(navigationBars);
+  expect(result).toBeTruthy();
 });
 
 test("Featured Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
+  const productName = dataSet.product;
   await yourStorePage.launchURL();
 
-  await yourStorePage.getProductList("iPhone");
+  let result = await yourStorePage.getProductList(productName);
+  expect(result).toBeTruthy();
 });
 
 test("Advertise Quantity Test", async ({ page }) => {
@@ -124,7 +127,7 @@ test("Advertise Quantity Test", async ({ page }) => {
   await yourStorePage.adsQuantity(qty);
 });
 
-test.only("Advertise Test", async ({ page }) => {
+test("Advertise Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const brand = dataSet.brand;
   const yourStorePage = basePage.getYourStorePage();

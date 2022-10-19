@@ -58,10 +58,10 @@ class YourStorePage {
     for (let i = 0; i < count; i++) {
       if (await titles.includes(bar)) {
         console.log(" =====> " + bar + " <===== ");
-        break;
+        return true;
       } else {
         console.log("Please provide the product from the list");
-        break;
+        return false;
       }
     }
   }
@@ -72,10 +72,10 @@ class YourStorePage {
     for (let i = 0; i <= count; i++) {
       if (productListText.includes(productName)) {
         console.log(" =====> " + productName + " <===== ");
-        break;
+        return true;
       } else {
         console.log("Please provide the product from the list");
-        break;
+        return false;
       }
     }
   }
