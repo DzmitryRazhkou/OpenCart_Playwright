@@ -3,6 +3,7 @@ const { ContactUsPage } = require("./ContactUsPage");
 const { RegisterPage } = require("./RegisterPage");
 const { LoginPage } = require("./LoginPage");
 const { MyAccountPage } = require("./MyAccountPage");
+const { SearchPage } = require("./SearchPage");
 const { ShoppingCartPage } = require("./ShoppingCartPage");
 const { CheckOutPage } = require("./CheckOutPage");
 
@@ -14,6 +15,7 @@ class BasePage {
     this.registerPage = new RegisterPage(this.page);
     this.loginPage = new LoginPage(this.page);
     this.myAccountPage = new MyAccountPage(this.page);
+    this.searchPage = new SearchPage(this.page);
     this.shoppingCartPage = new ShoppingCartPage(this.page);
     this.checkOutPage = new CheckOutPage(this.page);
   }
@@ -32,6 +34,9 @@ class BasePage {
   }
   getMyAccountPage() {
     return this.myAccountPage;
+  }
+  getSearchPage() {
+    return this.searchPage;
   }
   getShoppingCartPage() {
     return this.shoppingCartPage;

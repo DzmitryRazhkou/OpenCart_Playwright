@@ -4,8 +4,7 @@ const dataSet = JSON.parse(
   JSON.stringify(require("../utils/yourStorePage.json"))
 );
 
-test.only("Your Store Logo Test", async ({ page }) => {
-  const titlePageYourStore = dataSet.titlePage;
+test("Your Store Logo Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   await yourStorePage.launchURL();

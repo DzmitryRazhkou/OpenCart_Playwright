@@ -35,6 +35,8 @@ class YourStorePage {
     this.ads = page.locator(
       "div[class='carousel swiper-viewport'] div div img"
     );
+    this.searchField = page.locator("input[name='search']");
+    this.searchBtn = page.locator("span[class='input-group-btn']");
   }
 
   async launchURL() {
@@ -89,7 +91,6 @@ class YourStorePage {
     );
     expect(countOfAds).toEqual(qty);
   }
-
   async getAds(brand) {
     const list = [];
     const attrs = await this.ads;
@@ -108,6 +109,10 @@ class YourStorePage {
       console.log(" =====> Provide another brand <===== ");
       return false;
     }
+  }
+  async doSearch(productName) {
+    await this.searchField.type(productName);
+    await this.searchBtn.click();
   }
 }
 module.exports = { YourStorePage };
