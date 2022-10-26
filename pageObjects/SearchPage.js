@@ -28,11 +28,16 @@ class SearchPage {
         await this.productAddToCarts.nth(i).click();
       }
     }
+    await this.page.waitForLoadState("networkidle");
   }
   async validateSuccessMessage() {
     const successMessageText = await this.successMessage.textContent();
     console.log(" =====> " + successMessageText + " <===== ");
     return await this.successMessage.isVisible();
+  }
+  async proceedToCheckOut() {
+    await this.cart.click();
+    await this.checkOutBtn.click();
   }
 }
 module.exports = { SearchPage };

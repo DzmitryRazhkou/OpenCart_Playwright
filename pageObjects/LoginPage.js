@@ -7,12 +7,17 @@ class LoginPage {
     this.warning = page.locator(
       "div[class='alert alert-danger alert-dismissible']"
     );
+    this.logo = page.locator("img[title='naveenopencart']");
   }
 
   async doLogin(email, password) {
     await this.getEmail.type(email);
     await this.getPassword.type(password);
     await this.submitBtn.click();
+  }
+
+  async returnToYourStorePage() {
+    await this.logo.click();
   }
 }
 

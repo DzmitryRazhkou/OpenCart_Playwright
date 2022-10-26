@@ -1,0 +1,13 @@
+{
+  "productName": "MacBook",
+  "titlePage": "Checkout",
+
+  "currency": "$ US Dollar",
+  "currencySign": "$",
+
+  "email": "dimagadjilla@gmail.com",
+  "password": "3036057Dr",
+
+  "existingAddress": "I want to use an existing address",
+  "newAddress": "I want to use a new address"
+}

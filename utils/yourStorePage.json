@@ -1,7 +1,6 @@
 {
-  "titlePage": "Your Store",
-  "currency": "€ Euro",
-  "currencySign": "€",
+  "currency": "$ US Dollar",
+  "currencySign": "$",
   "navBars": "Software",
   "product": "iPhone",
   "qty": 21,
