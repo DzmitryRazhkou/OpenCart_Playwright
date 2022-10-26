@@ -137,13 +137,22 @@ test("Do Check Out Product Existing Address Test", async ({ page }) => {
   expect(await shoppingPage.warningAlert).toBeTruthy();
 });
 
-test.only("Do Check Out Product New Address Test", async ({ page }) => {
+test("Do Check Out Product New Address Test", async ({ page }) => {
   const email = dataSet.email;
   const psw = dataSet.password;
   const newAddress = dataSet.newAddress;
   const productName = dataSet.productName;
   const currency = dataSet.currency;
   const currencySign = dataSet.currencySign;
+  const firstName = faker.name.firstName();
+  const lastName = faker.name.lastName();
+  const company = faker.company.name();
+  const address1 = faker.address.streetAddress();
+  const address2 = faker.address.secondaryAddress();
+  const city = faker.address.city();
+  const zip = faker.address.zipCode();
+  const country = dataSet.country;
+  const state = faker.address.state();
   const comment = faker.lorem.text();
 
   const basePage = new BasePage(page);
@@ -166,6 +175,23 @@ test.only("Do Check Out Product New Address Test", async ({ page }) => {
   await searchPage.addToCartProduct(productName);
   await searchPage.proceedToCheckOut();
   await shoppingPage.selectAddress(newAddress);
-  await shoppingPage.selectCountry("Unites States");
+  await shoppingPage.doFillUpBillingDetails(
+    firstName,
+    lastName,
+    company,
+    address1,
+    address2,
+    city,
+    zip,
+    country,
+    state
+  );
+  await shoppingPage.clickContinueButtton();
+  await shoppingPage.paymentMethod(comment);
+
+  const warningAlertFlag = await shoppingPage.warningAlert.textContent();
+  console.log(" =====> " + warningAlertFlag + " <===== ");
+  expect(await shoppingPage.warningAlert).toBeTruthy();
+
   await page.pause();
 });

@@ -9,5 +9,6 @@
   "password": "3036057Dr",
 
   "existingAddress": "I want to use an existing address",
-  "newAddress": "I want to use a new address"
+  "newAddress": "I want to use a new address",
+  "country": "United States"
 }

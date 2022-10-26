@@ -27,8 +27,8 @@ class ShoppingCartPage {
     this.getCity = page.locator("#input-payment-city");
     this.getZip = page.locator("#input-payment-postcode");
 
-    this.countryField = page.locator("#input-payment-country");
-    this.stateField = page.locator("#input-payment-zone");
+    this.country = page.locator("#input-payment-country");
+    this.state = page.locator("#input-payment-zone");
   }
 
   async selectAddress(typeOfAddress) {
@@ -50,19 +50,13 @@ class ShoppingCartPage {
   }
 
   async selectCountry(countryName) {
-    await this.countryField.click();
+    await this.country.selectOption({ label: countryName });
+    expect(await this.country.textContent()).toContain(countryName);
+  }
 
-    const count = await this.countryField.count();
-    const countryList = await this.countryField
-      .locator("option")
-      .allTextContents();
-
-    for (let i = 0; i < count; i++) {
-      if (countryList.includes(countryName)) {
-        await this.countryField.locator("option").nth(i).click();
-        console.log(" =====> " + countryName + " <===== ");
-      }
-    }
+  async selectState(stateName) {
+    await this.state.selectOption({ label: stateName });
+    expect(await this.state.textContent()).toContain(stateName);
   }
 
   async paymentMethod(comment) {
@@ -90,6 +84,8 @@ class ShoppingCartPage {
     await this.getAddressSecond.type(address2);
     await this.getCity.type(city);
     await this.getZip.type(zip);
+    await this.selectCountry(country);
+    await this.selectState(state);
   }
 }
 
