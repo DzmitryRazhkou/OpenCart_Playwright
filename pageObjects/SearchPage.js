@@ -12,6 +12,12 @@ class SearchPage {
     );
     this.cart = page.locator("#cart");
     this.checkOutBtn = page.locator("p[class='text-right'] a:last-of-type");
+    this.addWishList = page.locator(
+      "div[class='row'] div div div div div button:nth-of-type(2)"
+    );
+    this.wishListBtn = page.locator(
+      "div[class='alert alert-success alert-dismissible'] a:last-of-type"
+    );
   }
 
   async doClickOnTheCheckOut() {
@@ -29,6 +35,21 @@ class SearchPage {
       }
     }
     await this.page.waitForLoadState("networkidle");
+  }
+  async addToWishList(productName) {
+    const count = await this.productNames.count();
+    for (let i = 0; i < count; i++) {
+      console.log(await this.productNames.nth(i).allTextContents());
+      if (
+        (await this.productNames.nth(i).allTextContents()).includes(productName)
+      ) {
+        await this.addWishList.nth(i).click();
+      }
+    }
+    await this.page.waitForLoadState("networkidle");
+  }
+  async clickOnTheWishList() {
+    this.wishListBtn.click();
   }
   async validateSuccessMessage() {
     const successMessageText = await this.successMessage.textContent();

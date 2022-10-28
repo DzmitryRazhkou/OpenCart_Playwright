@@ -29,6 +29,7 @@ test("Do Register New Customer Test", async ({ page }) => {
   const email = faker.internet.email();
   const phone = faker.phone.number();
   const psw = faker.internet.password();
+  const successMessage = dataSet.success;
 
   await yourStorePage.myAccount.click();
   await yourStorePage.registerBtn.click();
@@ -38,7 +39,7 @@ test("Do Register New Customer Test", async ({ page }) => {
   const successCreatedNewAccountText =
     await successCreatedNewAccount.textContent();
   console.log(" =====> " + successCreatedNewAccountText + " <===== ");
-  expect(successCreatedNewAccount).toHaveText("Your Account Has Been Created!");
+  expect(successCreatedNewAccount).toHaveText(successMessage);
 });
 
 test("Do Register New Customer With Invalid Credentials Test", async ({
@@ -54,6 +55,7 @@ test("Do Register New Customer With Invalid Credentials Test", async ({
   const email = faker.internet.email();
   const phone = faker.phone.number();
   const psw = faker.internet.password(2);
+  const alert = dataSet.alert;
 
   await yourStorePage.myAccount.click();
   await yourStorePage.registerBtn.click();
@@ -62,7 +64,5 @@ test("Do Register New Customer With Invalid Credentials Test", async ({
   const alertMessage = await registerPage.alertMesssage;
   const alertMessageText = await alertMessage.textContent();
   console.log(" =====> " + alertMessageText + " <===== ");
-  expect(alertMessage).toHaveText(
-    "Password must be between 4 and 20 characters!"
-  );
+  expect(alertMessage).toHaveText(alert);
 });

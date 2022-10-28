@@ -43,6 +43,7 @@ test("Login Invalid Credentials Test", async ({ page }) => {
 
   const email = dataSet.wrong_email;
   const psw = dataSet.wrong_password;
+  const warning = dataSet.warningAlert;
 
   await yourStorePage.myAccount.click();
   await yourStorePage.loginBtn.click();
@@ -51,7 +52,23 @@ test("Login Invalid Credentials Test", async ({ page }) => {
   const warningLink = await loginPage.warning;
   const warningLinkText = await warningLink.textContent();
   console.log(" =====> " + warningLinkText + " <===== ");
-  expect(warningLink).toContainText(
-    " Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour."
-  );
+  expect(warningLink).toContainText(warning);
+});
+
+test("Login Out Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  const loginPage = basePage.getLoginPage();
+  await yourStorePage.launchURL();
+
+  const email = dataSet.email;
+  const psw = dataSet.password;
+
+  await yourStorePage.myAccount.click();
+  await yourStorePage.loginBtn.click();
+  await loginPage.doLogin(email, psw);
+  await loginPage.logOut();
+
+  const logOutFlag = await loginPage.validateLogOutLink();
+  expect(logOutFlag).toBeTruthy();
 });

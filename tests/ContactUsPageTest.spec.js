@@ -45,6 +45,7 @@ test("Contact Us With Invalid Data Test", async ({ page }) => {
   const yourName = faker.name.fullName();
   const email = faker.internet.email().replace("@", "");
   const enquiry = faker.address.streetAddress();
+  const alert = dataSet.alertMessage;
 
   await yourStorePage.launchURL();
   await yourStorePage.phoneIcon.click();
@@ -55,7 +56,5 @@ test("Contact Us With Invalid Data Test", async ({ page }) => {
   const alertMessageText = await alertMessage.textContent();
 
   console.log(" =====> " + alertMessageText + " <===== ");
-  expect(alertMessage).toHaveText(
-    "E-Mail Address does not appear to be valid!"
-  );
+  expect(alertMessage).toHaveText(alert);
 });

@@ -3,5 +3,6 @@
   "email": "dimagadjilla@gmail.com",
   "password": "3036057Dr",
   "wrong_email": "dimagadjilla_@gmail.com",
-  "wrong_password": "3036057_Dr"
+  "wrong_password": "3036057_Dr",
+  "warningAlert": "Warning: Your account has exceeded allowed number of login attempts. Please try again in 1 hour."
 }

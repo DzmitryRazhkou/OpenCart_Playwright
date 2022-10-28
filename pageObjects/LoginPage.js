@@ -8,6 +8,11 @@ class LoginPage {
       "div[class='alert alert-danger alert-dismissible']"
     );
     this.logo = page.locator("img[title='naveenopencart']");
+    this.getMyAccount = page.locator("a[title='My Account']");
+    this.logOutButton = page.locator(
+      "ul[class='dropdown-menu dropdown-menu-right'] li:last-of-type"
+    );
+    this.logOutLink = page.locator("#content h1");
   }
 
   async doLogin(email, password) {
@@ -16,8 +21,19 @@ class LoginPage {
     await this.submitBtn.click();
   }
 
+  async logOut() {
+    await this.getMyAccount.click();
+    await this.logOutButton.click();
+  }
+
   async returnToYourStorePage() {
     await this.logo.click();
+  }
+
+  async validateLogOutLink() {
+    const logOutLinkText = await this.logOutLink.textContent();
+    console.log(" =====> " + logOutLinkText + " <===== ");
+    return await this.logOutLink.isVisible();
   }
 }
 

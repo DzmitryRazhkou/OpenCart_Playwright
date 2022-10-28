@@ -6,6 +6,7 @@ const { MyAccountPage } = require("./MyAccountPage");
 const { SearchPage } = require("./SearchPage");
 const { ShoppingCartPage } = require("./ShoppingCartPage");
 const { CheckOutPage } = require("./CheckOutPage");
+const { MyWishListPage } = require("./MyWishListPage");
 
 class BasePage {
   constructor(page) {
@@ -18,6 +19,7 @@ class BasePage {
     this.searchPage = new SearchPage(this.page);
     this.shoppingCartPage = new ShoppingCartPage(this.page);
     this.checkOutPage = new CheckOutPage(this.page);
+    this.myWishListPage = new MyWishListPage(this.page);
   }
 
   getYourStorePage() {
@@ -43,6 +45,9 @@ class BasePage {
   }
   getCheckOutPage() {
     return this.checkOutPage;
+  }
+  getMyWishListPage() {
+    return this.myWishListPage;
   }
 }
 module.exports = { BasePage };

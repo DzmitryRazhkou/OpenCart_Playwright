@@ -192,6 +192,4 @@ test("Do Check Out Product New Address Test", async ({ page }) => {
   const warningAlertFlag = await shoppingPage.warningAlert.textContent();
   console.log(" =====> " + warningAlertFlag + " <===== ");
   expect(await shoppingPage.warningAlert).toBeTruthy();
-
-  await page.pause();
 });

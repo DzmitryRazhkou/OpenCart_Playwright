@@ -1,5 +1,7 @@
 {
   "titlePage": "Register Account",
   "currency": "€ Euro",
-  "currencySign": "€"
+  "currencySign": "€",
+  "alert": "Password must be between 4 and 20 characters!",
+  "success": "Your Account Has Been Created!"
 }
