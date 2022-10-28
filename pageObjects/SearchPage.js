@@ -18,6 +18,7 @@ class SearchPage {
     this.wishListBtn = page.locator(
       "div[class='alert alert-success alert-dismissible'] a:last-of-type"
     );
+    this.table = page.locator("div[class='table-responsive']");
   }
 
   async doClickOnTheCheckOut() {
@@ -38,8 +39,8 @@ class SearchPage {
   }
   async addToWishList(productName) {
     const count = await this.productNames.count();
+    console.log(await this.productNames.allTextContents());
     for (let i = 0; i < count; i++) {
-      console.log(await this.productNames.nth(i).allTextContents());
       if (
         (await this.productNames.nth(i).allTextContents()).includes(productName)
       ) {
@@ -49,7 +50,8 @@ class SearchPage {
     await this.page.waitForLoadState("networkidle");
   }
   async clickOnTheWishList() {
-    this.wishListBtn.click();
+    await this.wishListBtn.click();
+    await this.table.waitFor();
   }
   async validateSuccessMessage() {
     const successMessageText = await this.successMessage.textContent();

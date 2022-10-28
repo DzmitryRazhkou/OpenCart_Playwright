@@ -59,7 +59,7 @@ test("Do Add To Wish List Product Test", async ({ page }) => {
   expect(successMessageFlag).toBeTruthy();
 });
 
-test.only("Validate Wish List Product Test", async ({ page }) => {
+test("Validate Wish List Product Test", async ({ page }) => {
   const email = dataSet.email;
   const psw = dataSet.password;
   const productName = dataSet.productName;
@@ -70,6 +70,7 @@ test.only("Validate Wish List Product Test", async ({ page }) => {
   const yourStorePage = basePage.getYourStorePage();
   const loginPage = basePage.getLoginPage();
   const searchPage = basePage.getSearchPage();
+  const myWishListPage = basePage.getMyWishListPage();
   await yourStorePage.launchURL();
 
   await yourStorePage.myAccount.click();
@@ -83,5 +84,68 @@ test.only("Validate Wish List Product Test", async ({ page }) => {
   await yourStorePage.doSearch(productName);
   await searchPage.addToWishList(productName);
   await searchPage.clickOnTheWishList();
-  await page.pause();
+  const validateWishListFlag = await myWishListPage.validateWishList(
+    productName
+  );
+  expect(validateWishListFlag).toBeTruthy();
+});
+
+test("Add To Cart Thru Wish List Product Test", async ({ page }) => {
+  const email = dataSet.email;
+  const psw = dataSet.password;
+  const productName = dataSet.productName;
+  const currency = dataSet.currency;
+  const currencySign = dataSet.currencySign;
+
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  const loginPage = basePage.getLoginPage();
+  const searchPage = basePage.getSearchPage();
+  const myWishListPage = basePage.getMyWishListPage();
+  await yourStorePage.launchURL();
+
+  await yourStorePage.myAccount.click();
+  await yourStorePage.loginBtn.click();
+
+  await loginPage.doLogin(email, psw);
+  await loginPage.returnToYourStorePage();
+
+  await yourStorePage.currencyBtn.click();
+  await yourStorePage.selectCurrency(currency, currencySign);
+  await yourStorePage.doSearch(productName);
+  await searchPage.addToWishList(productName);
+  await searchPage.clickOnTheWishList();
+  await myWishListPage.doAddToCartWishList(productName);
+  const successMessageFlag = await myWishListPage.validateSuccessMessage();
+  expect(successMessageFlag).toBeTruthy();
+});
+
+test("Remove From Cart Thru Wish List Product Test", async ({ page }) => {
+  const email = dataSet.email;
+  const psw = dataSet.password;
+  const productName = dataSet.productName;
+  const currency = dataSet.currency;
+  const currencySign = dataSet.currencySign;
+
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  const loginPage = basePage.getLoginPage();
+  const searchPage = basePage.getSearchPage();
+  const myWishListPage = basePage.getMyWishListPage();
+  await yourStorePage.launchURL();
+
+  await yourStorePage.myAccount.click();
+  await yourStorePage.loginBtn.click();
+
+  await loginPage.doLogin(email, psw);
+  await loginPage.returnToYourStorePage();
+
+  await yourStorePage.currencyBtn.click();
+  await yourStorePage.selectCurrency(currency, currencySign);
+  await yourStorePage.doSearch(productName);
+  await searchPage.addToWishList(productName);
+  await searchPage.clickOnTheWishList();
+  await myWishListPage.doRemoveFromCartWishList(productName);
+  const successMessageFlag = await myWishListPage.validateSuccessMessage();
+  expect(successMessageFlag).toBeTruthy();
 });
