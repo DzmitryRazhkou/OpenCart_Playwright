@@ -2,5 +2,9 @@
   "titlePage": "Contact Us",
   "currency": "€ Euro",
   "currencySign": "€",
-  "alertMessage": "E-Mail Address does not appear to be valid!"
+  "alertMessage": "E-Mail Address does not appear to be valid!",
+  "lengthOfStringYourNameMinimum": 2,
+  "lengthOfStringYourNameMaximum": 33,
+  "lengthOfStringEnquiryMinimum": 9,
+  "lengthOfStringEnquiryMaximum": 3001
 }

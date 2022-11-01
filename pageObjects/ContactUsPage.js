@@ -9,6 +9,17 @@ class ContactUsPage {
     this.dangerAlert = page.locator("div[class='text-danger']");
   }
 
+  createString(lengthOfString) {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    let leng = lengthOfString;
+    let randomString = "";
+    for (let i = 0; i < leng; i++) {
+      const randomNumber = Math.floor(Math.random() * characters.length);
+      randomString += characters[randomNumber];
+    }
+    return randomString;
+  }
+
   async doContactUs(yourName, email, enquiry) {
     await this.yourName.type(yourName);
     await this.email.type(email);
