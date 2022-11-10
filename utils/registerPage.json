@@ -3,5 +3,15 @@
   "currency": "€ Euro",
   "currencySign": "€",
   "alert": "Password must be between 4 and 20 characters!",
-  "success": "Your Account Has Been Created!"
+  "success": "Your Account Has Been Created!",
+  "firstName": "Dzmitry",
+  "lastName": "Razhkou",
+  "email": "dimagadjilla@gmail.com",
+  "phone": "2674962519",
+  "psw": "3036057Dr",
+  "alertExistingCustomer": " Warning: E-Mail Address is already registered!",
+  "telephoneAlertMessage": "Telephone must be between 3 and 32 characters!",
+  "passwordAlertMessage": "Password must be between 4 and 20 characters!",
+  "passwordDismatchAlert": "Password confirmation does not match password!",
+  "agreementPolicy": " Warning: You must agree to the Privacy Policy!"
 }

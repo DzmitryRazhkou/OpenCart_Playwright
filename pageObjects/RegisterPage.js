@@ -14,9 +14,18 @@ class RegisterPage {
     this.submitBtn = page.locator("input[type='submit']");
     this.successCreatedMessage = page.locator("#content h1");
     this.alertMesssage = page.locator("div[class='text-danger']");
+    this.warning = page.locator(
+      "div[class='alert alert-danger alert-dismissible']"
+    );
+    this.pswAlertMinMaxValue = page.locator(
+      '"Password must be between 4 and 20 characters!"'
+    );
+    this.pswAlertUnmatchedValue = page.locator(
+      '"Password confirmation does not match password!"'
+    );
   }
 
-  async doRegister(first, last, email, password, phone) {
+  async doRegister(first, last, email, phone, password) {
     await this.getFirstName.type(first);
     await this.getLastName.type(last);
     await this.getEmail.type(email);
@@ -24,6 +33,32 @@ class RegisterPage {
     await this.getPassword.type(password);
     await this.getConfirmPassword.type(password);
     await this.agreeCheckBox.check();
+    await this.submitBtn.click();
+  }
+  async doRegisterDismatchPsw(
+    first,
+    last,
+    email,
+    phone,
+    password,
+    passwordConfirm
+  ) {
+    await this.getFirstName.type(first);
+    await this.getLastName.type(last);
+    await this.getEmail.type(email);
+    await this.getPhone.type(phone);
+    await this.getPassword.type(password);
+    await this.getConfirmPassword.type(passwordConfirm);
+    await this.agreeCheckBox.check();
+    await this.submitBtn.click();
+  }
+  async doRegisterWithoutAgreementPolicy(first, last, email, phone, password) {
+    await this.getFirstName.type(first);
+    await this.getLastName.type(last);
+    await this.getEmail.type(email);
+    await this.getPhone.type(phone);
+    await this.getPassword.type(password);
+    await this.getConfirmPassword.type(password);
     await this.submitBtn.click();
   }
 }
