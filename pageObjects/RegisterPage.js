@@ -17,12 +17,21 @@ class RegisterPage {
     this.warning = page.locator(
       "div[class='alert alert-danger alert-dismissible']"
     );
+    this.success = page.locator(
+      "div[class='alert alert-success alert-dismissible']"
+    );
     this.pswAlertMinMaxValue = page.locator(
       '"Password must be between 4 and 20 characters!"'
     );
     this.pswAlertUnmatchedValue = page.locator(
       '"Password confirmation does not match password!"'
     );
+    this.forgottenPassword = page.locator(
+      "div[class='list-group'] a:nth-of-type(3)"
+    );
+    this.forgottenPasswordLink = page.locator("#content h1");
+    this.emailAddressForgotten = page.locator("#input-email");
+    this.continueBtn = page.locator("input[type='submit']");
   }
 
   async doRegister(first, last, email, phone, password) {
@@ -60,6 +69,16 @@ class RegisterPage {
     await this.getPassword.type(password);
     await this.getConfirmPassword.type(password);
     await this.submitBtn.click();
+  }
+  async validateForgotYourPasswordLink() {
+    const forgottenPasswordText =
+      await this.forgottenPasswordLink.textContent();
+    console.log(" =====> " + forgottenPasswordText + " <===== ");
+    return await this.forgottenPasswordLink.isVisible();
+  }
+  async sendEmailForPassword(email) {
+    await this.emailAddressForgotten.type(email);
+    await this.continueBtn.click();
   }
 }
 module.exports = { RegisterPage };

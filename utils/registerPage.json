@@ -13,5 +13,8 @@
   "telephoneAlertMessage": "Telephone must be between 3 and 32 characters!",
   "passwordAlertMessage": "Password must be between 4 and 20 characters!",
   "passwordDismatchAlert": "Password confirmation does not match password!",
-  "agreementPolicy": " Warning: You must agree to the Privacy Policy!"
+  "agreementPolicy": " Warning: You must agree to the Privacy Policy!",
+  "forgotPasswordLink": "Forgot Your Password?",
+  "emailConfirmationLink": " An email with a confirmation link has been sent your email address.",
+  "emailAddressWasNotFound": " Warning: The E-Mail Address was not found in our records, please try again!"
 }

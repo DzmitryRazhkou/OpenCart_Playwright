@@ -274,3 +274,56 @@ test("Do Register New Customer Without Agreement Policy Test", async ({
   console.log(" =====> " + agreementPolicyWarningText + " <===== ");
   expect(agreementPolicyWarning).toHaveText(agreementPolicyMessage);
 });
+
+test("Forgot Password Validate Page Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  const registerPage = basePage.getRegisterPage();
+  await yourStorePage.launchURL();
+
+  await yourStorePage.myAccount.click();
+  await yourStorePage.registerBtn.click();
+  await registerPage.forgottenPassword.click();
+  await registerPage.validateForgotYourPasswordLink();
+});
+
+test("Send Email Forgot Password Existing Customer Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  const registerPage = basePage.getRegisterPage();
+  const emailSendForgotPsw = dataSet.email;
+  const emailConfirmationSentMessage = dataSet.emailConfirmationLink;
+  await yourStorePage.launchURL();
+
+  await yourStorePage.myAccount.click();
+  await yourStorePage.registerBtn.click();
+  await registerPage.forgottenPassword.click();
+  await registerPage.sendEmailForPassword(emailSendForgotPsw);
+
+  const emailConfirmationLink = await registerPage.success;
+  const emailConfirmationLinkText = await emailConfirmationLink.textContent();
+  console.log(" =====> " + emailConfirmationLinkText + " <===== ");
+  expect(emailConfirmationLink).toHaveText(emailConfirmationSentMessage);
+});
+
+test("Send Email Forgot Password New Customer Test", async ({ page }) => {
+  const basePage = new BasePage(page);
+  const yourStorePage = basePage.getYourStorePage();
+  const registerPage = basePage.getRegisterPage();
+  const email = faker.internet.email();
+  const emailAddressWasNotFoundMessage = dataSet.emailAddressWasNotFound;
+  await yourStorePage.launchURL();
+
+  await yourStorePage.myAccount.click();
+  await yourStorePage.registerBtn.click();
+  await registerPage.forgottenPassword.click();
+  await registerPage.sendEmailForPassword(email);
+
+  const emailWasNotFoundMessageLink = await registerPage.warning;
+  const emailWasNotFoundMessageLinkText =
+    await emailWasNotFoundMessageLink.textContent();
+  console.log(" =====> " + emailWasNotFoundMessageLinkText + " <===== ");
+  expect(emailWasNotFoundMessageLink).toHaveText(
+    emailAddressWasNotFoundMessage
+  );
+});
