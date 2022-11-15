@@ -31,6 +31,7 @@ test("Your Shopping Page Title Test", async ({ page }) => {
   await yourStorePage.doSearch(productName);
   await searchPage.addToCartProduct(productName);
   await searchPage.proceedToCheckOut();
+  await page.pause();
 
   console.log(" =====> " + (await page.title()) + " <===== ");
   await expect(page).toHaveTitle(titlePageCheckOut);
