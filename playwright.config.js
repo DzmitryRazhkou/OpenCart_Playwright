@@ -12,7 +12,7 @@ const config = {
 
   use: {
     browserName: "webkit",
-    headless: true,
+    headless: false,
     screenshot: "on",
     trace: "on",
   },
