@@ -9,6 +9,7 @@
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@playwright/test": "^1.27.1"
+    "@playwright/test": "^1.27.1",
+    "electron": "^21.3.0"
   }
 }

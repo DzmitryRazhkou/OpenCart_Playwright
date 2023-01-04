@@ -3,6 +3,7 @@ const { BasePage } = require("../pageObjects/BasePage");
 const dataSet = JSON.parse(JSON.stringify(require("../utils/loginPage.json")));
 import { faker } from "@faker-js/faker";
 
+// test.describe.configure({ mode: "parallel" });
 test("Your Login Page Title Test", async ({ page }) => {
   const titlePageYourStore = dataSet.titlePage;
   const basePage = new BasePage(page);
@@ -206,16 +207,22 @@ test("Login Invalid Credentials Test", async ({ page }) => {
 
   const email = dataSet.wrong_email;
   const psw = dataSet.wrong_password;
-  const warning = dataSet.warningAlert;
+  const warningExceedAllowedNumberLoginAttemptsMessage =
+    dataSet.warningExceedAllowedNumberLoginAttempts;
 
   await yourStorePage.myAccount.click();
   await yourStorePage.loginBtn.click();
   await loginPage.doLogin(email, psw);
 
-  const warningLink = await loginPage.warning;
-  const warningLinkText = await warningLink.textContent();
-  console.log(" =====> " + warningLinkText + " <===== ");
-  expect(warningLink).toContainText(warning);
+  const warningExceedAllowedNumberLoginAttempts = await loginPage.warning;
+  const warningExceedAllowedNumberLoginAttemptsText =
+    await warningExceedAllowedNumberLoginAttempts.textContent();
+  console.log(
+    " =====> " + warningExceedAllowedNumberLoginAttemptsText + " <===== "
+  );
+  expect(warningExceedAllowedNumberLoginAttempts).toContainText(
+    warningExceedAllowedNumberLoginAttemptsMessage
+  );
 });
 
 test("Login Out Test", async ({ page }) => {
