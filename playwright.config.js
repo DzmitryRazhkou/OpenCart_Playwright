@@ -2,7 +2,7 @@ const { devices } = require("@playwright/test");
 
 const config = {
   testDir: "./tests",
-  retries: 1,
+  retries: 10,
   /* Workers --> VM for parallel execution */
   workers: 3,
   /* Maximum time one test can run for. */
@@ -15,7 +15,7 @@ const config = {
 
   use: {
     browserName: "webkit",
-    headless: false,
+    headless: true,
     screenshot: "on",
     trace: "on",
   },

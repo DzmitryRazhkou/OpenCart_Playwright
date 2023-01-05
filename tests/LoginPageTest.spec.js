@@ -3,7 +3,7 @@ const { BasePage } = require("../pageObjects/BasePage");
 const dataSet = JSON.parse(JSON.stringify(require("../utils/loginPage.json")));
 import { faker } from "@faker-js/faker";
 
-// test.describe.configure({ mode: "parallel" });
+test.describe.configure({ mode: "parallel" });
 test("Your Login Page Title Test", async ({ page }) => {
   const titlePageYourStore = dataSet.titlePage;
   const basePage = new BasePage(page);
