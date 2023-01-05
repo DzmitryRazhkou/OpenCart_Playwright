@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Thu Jan 05 15:38:02 EST 2023","Thu Jan 05 15:38:02 EST 2023","8","","LoginPageTest.spec.js","","","","Login Wrong Email Valid Password Credentials Test",""
+"failed","Thu Jan 05 15:38:01 EST 2023","Thu Jan 05 15:38:01 EST 2023","9","","ContactUsPageTest.spec.js","","","","Your Contact Us Page Title Test",""
+"failed","Thu Jan 05 15:38:01 EST 2023","Thu Jan 05 15:38:01 EST 2023","7","","LoginPageTest.spec.js","","","","Your Login Page Title Test",""
+"failed","Thu Jan 05 15:38:02 EST 2023","Thu Jan 05 15:38:02 EST 2023","8","","ContactUsPageTest.spec.js","","","","Contact Us With Valid Data Test",""
+"failed","Thu Jan 05 15:38:02 EST 2023","Thu Jan 05 15:38:02 EST 2023","9","","LoginPageTest.spec.js","","","","Login Not Existing Credentials Test",""
+"failed","Thu Jan 05 15:38:01 EST 2023","Thu Jan 05 15:38:01 EST 2023","8","","LoginPageTest.spec.js","","","","Login Valid Credentials Test",""
