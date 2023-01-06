@@ -37,7 +37,9 @@ test("Contact Us With Valid Data Test", async ({ page }) => {
   expect(successMessage).toHaveText(successMessageText);
 });
 
-test("Contact Us Invalid Your Name Minimum Value Test", async ({ page }) => {
+test("@Web Contact Us Invalid Your Name Minimum Value Test", async ({
+  page,
+}) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const contactUsPage = basePage.getContactUsPage();
@@ -81,7 +83,7 @@ test("Contact Us Invalid Your Name Maximum Value Test", async ({ page }) => {
   expect(alertMessage).toHaveText(alertMessageText);
 });
 
-test("Contact Us With Invalid Email Address Test", async ({ page }) => {
+test("@Web Contact Us With Invalid Email Address Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const contactUsPage = basePage.getContactUsPage();
@@ -125,7 +127,7 @@ test("Contact Us Invalid Enquiry Minimum Value Test", async ({ page }) => {
   expect(alertMessage).toHaveText(alertMessageText);
 });
 
-test("Contact Us Invalid Enquiry Maximum Value Test", async ({ page }) => {
+test("@Web Contact Us Invalid Enquiry Maximum Value Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const contactUsPage = basePage.getContactUsPage();

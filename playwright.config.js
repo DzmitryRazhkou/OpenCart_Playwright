@@ -4,7 +4,7 @@ const config = {
   testDir: "./tests",
   retries: 10,
   /* Workers --> VM for parallel execution */
-  workers: 3,
+  workers: 4,
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -23,9 +23,9 @@ const config = {
       },
     },
     {
-      name: "chrome",
+      name: "chromium",
       use: {
-        browserName: "chrome",
+        browserName: "chromium",
         headless: false,
         screenshot: "on",
         trace: "on",
@@ -35,7 +35,7 @@ const config = {
       name: "firefox",
       use: {
         browserName: "firefox",
-        headless: false,
+        headless: true,
         screenshot: "on",
         trace: "on",
       },

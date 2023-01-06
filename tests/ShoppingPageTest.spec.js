@@ -37,7 +37,7 @@ test("Your Shopping Page Title Test", async ({ page }) => {
   await expect(page).toHaveTitle(titlePageCheckOut);
 });
 
-test("Validate Existing Radio Button Test", async ({ page }) => {
+test("@Web Validate Existing Radio Button Test", async ({ page }) => {
   const email = dataSet.email;
   const psw = dataSet.password;
   const existingAddress = dataSet.existingAddress;
@@ -101,7 +101,7 @@ test("Validate New Address Radio Button Test", async ({ page }) => {
   expect(newAddressRadioButton).toHaveText(newAddress);
 });
 
-test("Do Check Out Product Existing Address Test", async ({ page }) => {
+test("@Web Do Check Out Product Existing Address Test", async ({ page }) => {
   const email = dataSet.email;
   const psw = dataSet.password;
   const existingAddress = dataSet.existingAddress;

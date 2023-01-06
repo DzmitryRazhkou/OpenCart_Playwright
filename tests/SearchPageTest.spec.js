@@ -14,7 +14,7 @@ test("Your Search Page Title Test", async ({ page }) => {
   await expect(page).toHaveTitle(titlePageSearch);
 });
 
-test("Do Add To Cart Product Test", async ({ page }) => {
+test("@Web Do Add To Cart Product Test", async ({ page }) => {
   const productName = dataSet.productName;
   const currency = dataSet.currency;
   const currencySign = dataSet.currencySign;
@@ -59,7 +59,7 @@ test("Do Add To Wish List Product Test", async ({ page }) => {
   expect(successMessageFlag).toBeTruthy();
 });
 
-test("Validate Wish List Product Test", async ({ page }) => {
+test("@Web Validate Wish List Product Test", async ({ page }) => {
   const email = dataSet.email;
   const psw = dataSet.password;
   const productName = dataSet.productName;
@@ -120,7 +120,7 @@ test("Add To Cart Thru Wish List Product Test", async ({ page }) => {
   expect(successMessageFlag).toBeTruthy();
 });
 
-test("Remove From Cart Thru Wish List Product Test", async ({ page }) => {
+test("@Web Remove From Cart Thru Wish List Product Test", async ({ page }) => {
   const email = dataSet.email;
   const psw = dataSet.password;
   const productName = dataSet.productName;

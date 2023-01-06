@@ -17,7 +17,7 @@ test("Your Login Page Title Test", async ({ page }) => {
   await expect(page).toHaveTitle(titlePageYourStore);
 });
 
-test("Login Valid Credentials Test", async ({ page }) => {
+test("@Web Login Valid Credentials Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const loginPage = basePage.getLoginPage();
@@ -37,7 +37,7 @@ test("Login Valid Credentials Test", async ({ page }) => {
   expect(myAccountLink).toHaveText("Account");
 });
 
-test("Login Not Existing Credentials Test", async ({ page }) => {
+test("@Web Login Not Existing Credentials Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const loginPage = basePage.getLoginPage();
@@ -139,7 +139,7 @@ test("Login Between One To Four Valid Password Credentials", async ({
   );
 });
 
-test("Login Valid Email Just Numbers Password Credentials Test", async ({
+test("@Web Login Valid Email Just Numbers Password Credentials Test", async ({
   page,
 }) => {
   const basePage = new BasePage(page);
@@ -225,7 +225,7 @@ test("Login Invalid Credentials Test", async ({ page }) => {
   );
 });
 
-test("Login Out Test", async ({ page }) => {
+test("@Web Login Out Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const loginPage = basePage.getLoginPage();

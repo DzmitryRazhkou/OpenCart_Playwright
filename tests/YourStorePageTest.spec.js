@@ -4,7 +4,7 @@ const dataSet = JSON.parse(
   JSON.stringify(require("../utils/yourStorePage.json"))
 );
 
-test("Your Store Logo Test", async ({ page }) => {
+test("@Web Your Store Logo Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   await yourStorePage.launchURL();
@@ -29,7 +29,7 @@ test("Your Store Page Title Test", async ({ page }) => {
   //   console.log(" =====> Logo has been showed up <===== ");
 });
 
-test("Currency Select Test", async ({ page }) => {
+test("@Web Currency Select Test", async ({ page }) => {
   const currency = dataSet.currency;
   const currencySign = dataSet.currencySign;
 
@@ -53,7 +53,7 @@ test("Click On The Contact Us Icon Test", async ({ page }) => {
   expect(contactUsLink).toHaveText(textContactUs);
 });
 
-test("Click On The Register Page Test", async ({ page }) => {
+test("@Web Click On The Register Page Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   await yourStorePage.launchURL();
@@ -81,7 +81,7 @@ test("Click On The Login Page Test", async ({ page }) => {
   expect(loginLink).toHaveText(textLoginLink);
 });
 
-test("Click On The Shopping Cart Test", async ({ page }) => {
+test("@Web Click On The Shopping Cart Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const shoppingCartPage = basePage.getShoppingCartPage();
@@ -109,7 +109,7 @@ test("Click On The CheckOut Test", async ({ page }) => {
   expect(checkOutLinkLink).toHaveText(checkOutLinkLinkText);
 });
 
-test("Validate Navigation Bars", async ({ page }) => {
+test("@Web Validate Navigation Bars", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const navigationBars = dataSet.navBars;
@@ -128,7 +128,7 @@ test("Featured Test", async ({ page }) => {
   expect(result).toBeTruthy();
 });
 
-test("Advertise Quantity Test", async ({ page }) => {
+test("@Web Advertise Quantity Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const qty = dataSet.qty;
   const yourStorePage = basePage.getYourStorePage();

@@ -18,7 +18,7 @@ test("Your Register Page Title Test", async ({ page }) => {
   await expect(page).toHaveTitle(titlePageYourStore);
 });
 
-test("Do Register New Customer Test", async ({ page }) => {
+test("@Web Do Register New Customer Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const registerPage = basePage.getRegisterPage();
@@ -93,7 +93,7 @@ test("Do Register New Customer With Minimum Phone Number Value Test", async ({
   expect(telephoneAlert).toHaveText(telephoneAlertMessage);
 });
 
-test("Do Register New Customer With Maximum Phone Number Value Test", async ({
+test("@Web Do Register New Customer With Maximum Phone Number Value Test", async ({
   page,
 }) => {
   const basePage = new BasePage(page);
@@ -118,7 +118,7 @@ test("Do Register New Customer With Maximum Phone Number Value Test", async ({
   expect(telephoneAlert).toHaveText(telephoneAlertMessage);
 });
 
-test("Do Register New Customer With Minimum Password Value Test", async ({
+test("@Web Do Register New Customer With Minimum Password Value Test", async ({
   page,
 }) => {
   const basePage = new BasePage(page);
@@ -168,7 +168,7 @@ test("Do Register New Customer With Maximum Password Value Test", async ({
   expect(passwordAlert).toHaveText(passwordAlertMessage);
 });
 
-test("Do Register New Customer With Dismatched Password Value Test", async ({
+test("@Web Do Register New Customer With Dismatched Password Value Test", async ({
   page,
 }) => {
   const basePage = new BasePage(page);
@@ -275,7 +275,7 @@ test("Do Register New Customer Without Agreement Policy Test", async ({
   expect(agreementPolicyWarning).toHaveText(agreementPolicyMessage);
 });
 
-test("Forgot Password Validate Page Test", async ({ page }) => {
+test("@Web Forgot Password Validate Page Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const registerPage = basePage.getRegisterPage();
@@ -306,7 +306,7 @@ test("Send Email Forgot Password Existing Customer Test", async ({ page }) => {
   expect(emailConfirmationLink).toHaveText(emailConfirmationSentMessage);
 });
 
-test("Send Email Forgot Password New Customer Test", async ({ page }) => {
+test("@Web Send Email Forgot Password New Customer Test", async ({ page }) => {
   const basePage = new BasePage(page);
   const yourStorePage = basePage.getYourStorePage();
   const registerPage = basePage.getRegisterPage();

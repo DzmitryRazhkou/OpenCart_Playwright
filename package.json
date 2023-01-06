@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "regression": "npx playwright test",
-    "registerPageTest:firefox": "npx playwright test tests/RegisterPageTest.spec.js --projects=firefox"
+    "registerPageTest:firefox": "npx playwright test tests/RegisterPageTest.spec.js --project=firefox",
+    "registerPageTest:chromium": "npx playwright test tests/RegisterPageTest.spec.js --project=chromium",
+    "webTests": "npx playwright test --grep @Web --project=firefox"
   },
   "keywords": [],
   "author": "",
