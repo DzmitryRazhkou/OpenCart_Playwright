@@ -11,14 +11,36 @@ const config = {
     timeout: 5000,
   },
 
-  reporter: "html",
-
-  use: {
-    browserName: "webkit",
-    headless: true,
-    screenshot: "on",
-    trace: "on",
-  },
+  reporter: "html", //npx playwright show-report
+  projects: [
+    {
+      name: "safari",
+      use: {
+        browserName: "webkit",
+        headless: true,
+        screenshot: "on",
+        trace: "on",
+      },
+    },
+    {
+      name: "chrome",
+      use: {
+        browserName: "chrome",
+        headless: false,
+        screenshot: "on",
+        trace: "on",
+      },
+    },
+    {
+      name: "firefox",
+      use: {
+        browserName: "firefox",
+        headless: false,
+        screenshot: "on",
+        trace: "on",
+      },
+    },
+  ],
 };
 
 module.exports = config;
